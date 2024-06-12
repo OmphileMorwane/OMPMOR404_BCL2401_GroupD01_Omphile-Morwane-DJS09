@@ -164,7 +164,7 @@ class MainProperty {
 }
 
 let yourMainProperty = new MainProperty(
-    'images/italian-property.jpg', 
+    './images/italian-property.jpg', 
     'Italian House',
     [{
         name: 'Olive',
