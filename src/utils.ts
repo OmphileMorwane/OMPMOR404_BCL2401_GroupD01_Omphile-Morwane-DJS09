@@ -22,12 +22,25 @@ export function showDetails(value: boolean | Permissions, element : HTMLDivEleme
     }
 }
 
-function add( firstValue: number, secondValue: number ) {
-    return firstValue + secondValue
-}
 
 export function makeMultiple(value: number) : string {
     if (value > 1) {
         return 's'
     } else return ''
+}
+
+export function getTopTwoReviews(reviews: {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;
+}[]) : {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;
+
+}[]  {
+ const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
+ return sortedReviews.slice(0,2)
 }
