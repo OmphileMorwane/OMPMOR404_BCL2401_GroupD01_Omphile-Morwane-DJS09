@@ -4,31 +4,14 @@ import { showReviewTotal, populateUser, showDetails, getTopTwoReviews} from './u
 import { Price, Country } from './types'
 import { Permissions , LoyaltyUser } from './enums'
 import  Review  from './interfaces'
+
 const propertyContainer = document.querySelector('.properties')
 const reviewContainer = document.querySelector('.reviews')
 const container = document.querySelector('.container')
 const button = document.querySelector('button')
 const footer = document.querySelector('.footer')
 
-let isLoggedIn: boolean
-
-enum Permissions {
-    ADMIN = 'ADMIN', 
-    READ_ONLY = 'READ_ONLY'
-}
-
-enum LoyaltyUser {
-    GOLD_USER = 'GOLD_USER',
-    SILVER_USER = 'SILVER_USER',
-    BRONZE_USER = 'BRONZE_USER'
-}
-
-interface Review {
-    name: string; 
-    stars: number; 
-    loyaltyUser: LoyaltyUser; 
-    date: string;   
-}
+let isLoggedIn: boolean;
 
 // Reviews
 const reviews: Review[] = [
@@ -129,7 +112,7 @@ const properties : Property[] = [
         contact: [ +60349822083, 'lee34@gmail.com'],
         isAvailable: false
     }
-]
+];
 
 // Functions
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
