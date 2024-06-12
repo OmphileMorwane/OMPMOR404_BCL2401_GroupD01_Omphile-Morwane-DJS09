@@ -26,8 +26,8 @@ function add( firstValue: number, secondValue: number ) {
     return firstValue + secondValue
 }
 
-export function makeMultiple(value: number) {
+export function makeMultiple(value: number) : string {
     if (value > 1) {
         return 's'
-    } 
+    } else return ''
 }
