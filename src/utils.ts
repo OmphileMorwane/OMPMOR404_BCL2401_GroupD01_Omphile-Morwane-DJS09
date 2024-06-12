@@ -22,3 +22,12 @@ export function showDetails(value: boolean | Permissions, element : HTMLDivEleme
     }
 }
 
+function add( firstValue: number, secondValue: number ) {
+    return firstValue + secondValue
+}
+
+export function makeMultiple(value: number) {
+    if (value > 1) {
+        return 's'
+    } 
+}

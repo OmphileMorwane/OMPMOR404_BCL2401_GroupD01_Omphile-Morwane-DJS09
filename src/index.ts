@@ -1,6 +1,7 @@
 import "../index.css"
 
 import { showReviewTotal, populateUser } from "./utils";
+import { Price, Country } from "./types"
 import { Permissions, LoyaltyUser } from "./enums";
 const propertyContainer = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
@@ -48,7 +49,7 @@ const properties: {
     firstLine: string;
     city: string;
     code: number;
-    country: string;
+    country: Country;
   };
   contact: [number, string];
   isAvailable: boolean;
@@ -69,7 +70,7 @@ const properties: {
   {
     image: "./images/poland-property.jpg",
     title: "Polish Cottage",
-    price: 34,
+    price: 30,
     location: {
       firstLine: "no 23",
       city: "Gdansk",
@@ -82,7 +83,7 @@ const properties: {
   {
     image: "./images/london-property.jpg",
     title: "London Flat",
-    price: 23,
+    price: 25,
     location: {
       firstLine: "flat 15",
       city: "London",
