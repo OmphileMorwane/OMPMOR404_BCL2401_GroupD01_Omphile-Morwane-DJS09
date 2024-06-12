@@ -1,22 +1,24 @@
-import "../index.css";
+import "../index.css"; //Importing the CSS for styling
 
 import {
   showReviewTotal,
   populateUser,
   showDetails,
   getTopTwoReviews,
-} from "./utils";
-import { Permissions, LoyaltyUser } from "./enums";
-import { Review, Property } from "./interfaces";
-import MainProperty from "./classes";
+} from "./utils"; //Importing utility functions from utils module
+import { Permissions, LoyaltyUser } from "./enums"; //Importing enumirations for permissions and loyalty users
+import { Review, Property } from "./interfaces"; //Importing interfaces for permissions ans loyalty users
+import MainProperty from "./classes"; //Importing the MainProperty class
+
+//Quering DOM elements and type asserting them as HTMLElemnts
 const propertyContainer = document.querySelector(".properties") as HTMLElement;
 const reviewContainer = document.querySelector(".reviews") as HTMLElement;
 const container = document.querySelector(".container") as HTMLElement;
 const button = document.querySelector("button") as HTMLElement;
 const footer = document.querySelector(".footer") as HTMLElement;
 
-let isLoggedIn: boolean;
-// Reviews
+let isLoggedIn: boolean; //Variable to track if a user is logged in
+// Array of review Objects 
 const reviews: Review[] = [
   {
     name: "Sheia",
@@ -37,7 +39,7 @@ const reviews: Review[] = [
     date: "27-03-2021",
   },
 ];
-
+//User object with details
 const you = {
   firstName: "Bobby",
   lastName: "Brown",
@@ -47,7 +49,7 @@ const you = {
   stayedAt: ["florida-home", "oman-flat", "tokyo-bungalow"],
 };
 
-// Array of Properties
+// Array of Properties objects
 const properties: Property[] = [
   {
     image: "images/colombia-property.jpg",
@@ -103,41 +105,43 @@ const properties: Property[] = [
   },
 ];
 
-// Functions
+// Functions to show the total number of reviews and details ofthe first review
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
-
+//function to populate user details
 populateUser(you.isReturning, you.firstName);
 
-// Add the properties
+// Add the property caerds to the DOM
 for (let i = 0; i < properties.length; i++) {
-  const card = document.createElement("div");
-  card.classList.add("card");
-  card.innerHTML = properties[i].title;
-  const image = document.createElement("img");
-  image.setAttribute("src", properties[i].image);
-  card.appendChild(image);
-  showDetails(you.permissions, card, properties[i].price);
-  propertyContainer.appendChild(card);
+  const card = document.createElement("div"); //Create a div element for the card
+  card.classList.add("card"); //Add a class for styling
+  card.innerHTML = properties[i].title; //Set the inner HTML to the property title
+  const image = document.createElement("img"); //Create an img element
+  image.setAttribute("src", properties[i].image); // Set the image source
+  card.appendChild(image); //Append the image to the card
+  showDetails(you.permissions, card, properties[i].price); //Show property details based on user permissions
+  propertyContainer.appendChild(card); // Append the card to the property contsiner
 }
-
+//Counter to ensure reviews are added only ince
 let count = 0;
+// Funxction to add reviews to the DOM
 function addReviews(array: Review[]): void {
-  if (!count) {
+  if (!count) { //  Check if reviews have not been added yet
     count++;
-    const topTwo = getTopTwoReviews(array);
+    const topTwo = getTopTwoReviews(array); //Get the top two reviews
     for (let i = 0; i < topTwo.length; i++) {
-      const card = document.createElement("div");
-      card.classList.add("review-card");
-      card.innerHTML = topTwo[i].stars + " stars from " + topTwo[i].name;
-      reviewContainer.appendChild(card);
+      const card = document.createElement("div"); //Create a div elements for the review card
+      card.classList.add("review-card"); //Add class for styling
+      card.innerHTML = topTwo[i].stars + " stars from " + topTwo[i].name; //Set tge review details
+      reviewContainer.appendChild(card); //Append the review card to the review container
     }
-    container.removeChild(button);
+    container.removeChild(button); //Remove the button after reviews are added
   }
 }
-
+//Add event listenenr to the button to add reviews on click
 button.addEventListener("click", () => addReviews(reviews));
-
+//Current location details
 let currentLocation: [string, string, number] = ["Johannesburg", "15:29", 9];
+//Update footer kwith current location details
 footer.innerHTML =
   currentLocation[0] +
   " " +
@@ -145,7 +149,7 @@ footer.innerHTML =
   " " +
   currentLocation[2] +
   "°";
-
+//Main property object
 let yourMainProperty = new MainProperty(
   "./images/italian-property.jpg",
   "Italian House",
@@ -158,7 +162,7 @@ let yourMainProperty = new MainProperty(
     },
   ]
 );
-
+//Query the main image container and add the main property image
 const mainImageContainer = document.querySelector(".main-image");
 const image = document.createElement("img");
 image.setAttribute("src", yourMainProperty.src);
