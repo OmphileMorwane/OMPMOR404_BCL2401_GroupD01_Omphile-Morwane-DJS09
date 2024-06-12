@@ -10,7 +10,7 @@ The project employs CSS styling by importing a CSS file (index.css) to enhance t
 
 The project was an intense code-along challenge, and it presented some difficulties, especially when coding a Scrimba project on VS Code. There were extra dependencies and configurations that needed to be installed, adding to the complexity. Additionally, I encountered a bug where the code meant to display the latest reviews is not functioning correctly. Despite my efforts, I have not been able to debug this issue. I plan to discuss this with my coach to explore potential solutions and fix the bug.
 
-### How too run code 
+### How to run code 
 
 Terminal: npm run serve
 
